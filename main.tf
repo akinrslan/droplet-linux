@@ -1,6 +1,6 @@
 # Data source for our SSH key
 
-data "digitalocean_ssh_key" "karo-dokey" {
+data "digitalocean_ssh_key" "local" {
   name = "id_rsa.pub"
 }
 
@@ -10,6 +10,6 @@ resource "digitalocean_droplet" "karo-droplet" {
   name     = var.droplet_name
   region   = var.droplet_region
   size     = var.image_size
-  ssh_keys = [data.digitalocean_ssh_key.karo-dokey.id]
+  ssh_keys = [data.digitalocean_ssh_key.local.id]
 }
 
